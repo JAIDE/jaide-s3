@@ -9,7 +9,7 @@ This is a very simple wrapper around the Amazon S3 library. With this code you c
 Directly uploading a file
 -------------------------
 
-Here's how to upload a file without using Spring:
+Here's how to upload a file without using Spring (if you're making use of the Apache commons-io library):
 
     import de.jaide.s3.JaideS3Uploader;
     ...
@@ -23,7 +23,7 @@ Uploading a file via Spring
 * In that file enter your Amazon S3 access credentials.
 * Place that file somewhere in the classpath or just put it where the .template-file is.
 
-Here's how to upload a file using Spring:
+Here's how to upload a file using Spring (if you're making use of the Apache commons-io library):
 
     import de.jaide.s3.JaideS3Uploader;
     ...
