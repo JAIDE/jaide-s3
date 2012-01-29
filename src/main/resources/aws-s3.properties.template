@@ -1,0 +1,4 @@
+# Enter your S3 access credentials and the bucket name and save this file as aws-s3.properties to get picked up by Spring.
+aws.s3.accessKey=SomeAccessKey
+aws.s3.secretKey=SomeSecretKey
+aws.s3.bucket=some-bucket-name

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- Loads the properties. This assumes there's an aws-s3.properties somewhere in the classpath. -->
+	<bean id="propertySourcesPlaceholderConfigurer"
+		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:aws-s3.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Pre-instantiates the Uploader bean with the AWS S3 connection properties that were (hopefully) loaded before. -->
+	<bean id="de_jaide_s3_JaideS3Uploader" class="de.jaide.s3.JaideS3Uploader">
+		<constructor-arg value="${aws.s3.accessKey}" />
+		<constructor-arg value="${aws.s3.secretKey}" />
+		<constructor-arg value="${aws.s3.bucket}" />
+	</bean>
+
+</beans>
