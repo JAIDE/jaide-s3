@@ -21,6 +21,7 @@
 		<name>JAIDE</name>
 		<url>http://www.jaide.de</url>
 	</organization>
+
 	<dependencies>
 		<!-- Spring Core -->
 		<dependency>
