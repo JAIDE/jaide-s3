@@ -33,7 +33,11 @@ Here's how to upload a file using Spring (if you're making use of the Apache com
 Integrating into your code
 --------------------------
 
-* Check out the provided test classes for information on how to use this library.
-* Choose one of the above two methods.
-* Build your code with Maven and put the resulting .JAR file into your application's library folder.
+* You will need Java 6 and Maven 3 to build the code
+* Choose one of the above two methods to use this library
+* Build your code with Maven
+* You will see that two tests will fail - they fail because you didn't provide your S3 access credentials
+* Put them where the two tests, at the top of the files, tell you to put them
+* Build again, this time things should be fine
+* Put the resulting .jar file into your application's library folder
 

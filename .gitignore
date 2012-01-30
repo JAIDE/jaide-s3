@@ -1,0 +1,6 @@
+.classpath
+.project
+.settings/
+target/
+src/main/resources/aws-s3.properties
+

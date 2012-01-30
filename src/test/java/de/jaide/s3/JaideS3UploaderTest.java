@@ -11,7 +11,7 @@ import junit.framework.TestSuite;
 import org.apache.commons.io.FileUtils;
 
 /**
- * Call the Uploader by directly instantiating it using our S3 access credentials.
+ * Call the Uploader by directly instantiating it using our S3 access credentials. Put in your own S3 access credentials in the line below.
  */
 public class JaideS3UploaderTest extends TestCase {
   /**
