@@ -4,7 +4,7 @@
 
 	<groupId>de.jaide</groupId>
 	<artifactId>jaide-s3</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<name>jaide-s3</name>
@@ -72,7 +72,7 @@
 		<repository>
 			<id>nexus</id>
 			<name>JAIDE Maven Repository</name>
-			<url>http://repo.jaide.de/content/repositories/snapshots/</url>
+			<url>http://repo.jaide.de/content/repositories/releases/</url>
 		</repository>
 	</distributionManagement>
 
