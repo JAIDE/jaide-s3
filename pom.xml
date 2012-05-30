@@ -99,6 +99,17 @@
           </excludes>
         </configuration>
       </plugin>
+
+      <!-- Exclude the aws-s3.properties configuration file from the packaged source JAR -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>**/aws-s3.properties</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>
