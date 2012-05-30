@@ -89,7 +89,7 @@
         </configuration>
       </plugin>
 
-      <!-- Exclude the aws-s3.properties from the packaged JAR -->
+      <!-- Exclude the aws-s3.properties configuration file from the packaged JAR -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
