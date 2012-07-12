@@ -29,7 +29,7 @@ public class JaideS3Uploader {
   public static String CONTENT_TYPE_APPLICATION_ZIP = "application/zip";
   public static String CONTENT_TYPE_APPLICATION_PDF = "application/pdf";
   public static String CONTENT_TYPE_APPLICATION_XGZIP = "application/x-gzip";
-  public static String CONTENT_TYPE_APPLICATION_XCOMPRESSED = "application/x-compress";
+  public static String CONTENT_TYPE_APPLICATION_XCOMPRESSED = "application/x-compressed";
   public static String CONTENT_TYPE_IMAGE_JPEG = "image/jpeg";
   public static String CONTENT_TYPE_IMAGE_PNG = "image/png";
   public static String CONTENT_TYPE_IMAGE_GIF = "image/gif";
