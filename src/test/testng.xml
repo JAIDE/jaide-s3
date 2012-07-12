@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+<suite name="jaide-s3">
+	<test name="Test S3 Uploading">
+		<classes>
+			<class name="de.jaide.s3.JaideS3UploaderTest" />
+		</classes>
+	</test>
+</suite>

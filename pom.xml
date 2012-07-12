@@ -4,7 +4,7 @@
 
   <groupId>de.jaide</groupId>
   <artifactId>jaide-s3</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
 
   <name>jaide-s3</name>
@@ -14,7 +14,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- Versions -->
-    <spring.version>3.1.1.RELEASE</spring.version>
+    <spring.version>3.1.2.RELEASE</spring.version>
   </properties>
 
   <organization>
@@ -62,7 +62,7 @@
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>6.2.1</version>
+      <version>6.5.2</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -93,6 +93,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
         <configuration>
           <excludes>
             <exclude>**/aws-s3.properties</exclude>
@@ -104,6 +105,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
+        <version>2.1.2</version>
         <configuration>
           <excludes>
             <exclude>**/aws-s3.properties</exclude>

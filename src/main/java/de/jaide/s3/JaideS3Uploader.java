@@ -21,6 +21,23 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
  * @author Rias A. Sherzad (rias@sherzad.com)
  */
 public class JaideS3Uploader {
+  /**
+   * Constants representing the content types permitted by Amazon S3
+   */
+  public static String CONTENT_TYPE_APPLICATION_OCTETSTREAM = "application/octet-stream";
+  public static String CONTENT_TYPE_APPLICATION_MSWORD = "application/msword";
+  public static String CONTENT_TYPE_APPLICATION_ZIP = "application/zip";
+  public static String CONTENT_TYPE_APPLICATION_PDF = "application/pdf";
+  public static String CONTENT_TYPE_APPLICATION_XGZIP = "application/x-gzip";
+  public static String CONTENT_TYPE_APPLICATION_XCOMPRESSED = "application/x-compress";
+  public static String CONTENT_TYPE_IMAGE_JPEG = "image/jpeg";
+  public static String CONTENT_TYPE_IMAGE_PNG = "image/png";
+  public static String CONTENT_TYPE_IMAGE_GIF = "image/gif";
+  public static String CONTENT_TYPE_IMAGE_BMP = "image/bmp";
+  public static String CONTENT_TYPE_IMAGE_TIFF = "image/tiff";
+  public static String CONTENT_TYPE_TEXT_PLAIN = "text/plain";
+  public static String CONTENT_TYPE_TEXT_RTF = "text/rtf";
+  public static String CONTENT_TYPE_AUDIO_MPEG = "audio/mpeg";
 
   /**
    * Connection details to Amazon S3.
@@ -66,10 +83,11 @@ public class JaideS3Uploader {
    * @param path The path where to store the resource inside the bucket.
    * @param filename The name to store the resource as.
    * @param file The resource to store inside the bucket.
+   * @param contentType The file's content-type, as specified in the constants of this class.
    * @return True, if the upload succeeded.
    */
-  public boolean upload(String path, String filename, InputStream file) {
-    return upload(bucket, path, filename, file);
+  public boolean upload(String path, String filename, InputStream file, String contentType) {
+    return upload(bucket, path, filename, file, contentType);
   }
 
   /**
@@ -79,9 +97,10 @@ public class JaideS3Uploader {
    * @param path The path where to store the resource inside the bucket.
    * @param filename The name to store the resource as.
    * @param file The resource to store inside the bucket.
+   * @param contentType The file's content-type, as specified in the constants of this class.
    * @return True, if the upload succeeded.
    */
-  public boolean upload(String bucket, String path, String filename, InputStream file) {
+  public boolean upload(String bucket, String path, String filename, InputStream file, String contentType) {
     /*
      * Refresh the connection, if necessary.
      */
@@ -95,6 +114,7 @@ public class JaideS3Uploader {
      */
     ObjectMetadata meta = new ObjectMetadata();
     meta.setContentLength(((ByteArrayInputStream) file).available());
+    meta.setContentType(contentType);
 
     /*
      * Proceed with the actual upload.
@@ -112,7 +132,7 @@ public class JaideS3Uploader {
   }
 
   /**
-   * Sanitizes the path and makes sure there is no "/" at the front and there is a "/" at the end of the path.
+   * Sanitizes the path and makes sure there is no "/" at the front and that there is a "/" at the end of the path.
    * 
    * @param path The path to clean and fix.
    * @return The cleaned up path.
@@ -121,7 +141,7 @@ public class JaideS3Uploader {
     if (path.startsWith("/"))
       path = path.substring(1);
 
-    return path + "/";
+    return path.endsWith("/") ? path : path + "/";
   }
 
   /**

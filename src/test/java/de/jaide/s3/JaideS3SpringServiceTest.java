@@ -43,7 +43,8 @@ public class JaideS3SpringServiceTest extends TestCase {
      * Call the Uploader by using the Spring framework. For this to work you need to modify the existing "aws-s3.properties.template" file
      * by putting in your S3 access credentials and saving it somewhere in the classpath under the filename "aws-s3.properties".
      */
-    boolean upload = JaideS3SpringService.getJaideS3Uploader().upload(String.valueOf(System.currentTimeMillis()), "BabyOngBak.jpg", bin);
+    boolean upload = JaideS3SpringService.getJaideS3Uploader().upload(String.valueOf(System.currentTimeMillis()), "BabyOngBak.jpg", bin,
+        JaideS3Uploader.CONTENT_TYPE_IMAGE_JPEG);
     assertTrue(upload);
   }
 }
