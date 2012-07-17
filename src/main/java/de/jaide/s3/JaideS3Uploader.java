@@ -11,6 +11,7 @@ import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
@@ -92,6 +93,7 @@ public class JaideS3Uploader {
 
   /**
    * Uploads the given resource to the specified bucket. Does not replace the pre-specified bucket as this is a one-time operation.
+   * Please note that the uploaded file will be set with the ACL "PublicRead" and is therefore accessible to everyone.
    * 
    * @param bucket The target bucket inside S3. Needs to exist.
    * @param path The path where to store the resource inside the bucket.
@@ -120,7 +122,8 @@ public class JaideS3Uploader {
      * Proceed with the actual upload.
      */
     try {
-      amazonS3.putObject(new PutObjectRequest(bucket, sanitizePath(path) + filename, file, meta));
+      amazonS3.putObject(new PutObjectRequest(bucket, sanitizePath(path) + filename, file, meta)
+          .withCannedAcl(CannedAccessControlList.PublicRead));
       return true;
     } catch (AmazonServiceException ase) {
       ase.printStackTrace();
