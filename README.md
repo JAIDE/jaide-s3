@@ -3,7 +3,7 @@ What is this?
 
 This is a very simple wrapper around the Amazon S3 library. With this code you can:
 
-* Easily upload files to Amazon S3 with two lines of code... and one of those two lines is the import-package line at the top of your .java file :-)
+* Easily upload/delete files to/from Amazon S3 with two lines of code... and one of those two lines is the import-package line at the top of your .java file :-)
 * Make use of Spring as the library is Spring-enabled - but it's not a must. You're free to use the direct uploader OR the Spring service, whatever you prefer.
 * You can now (version 1.1) specify the content type of the uploaded file
 
@@ -37,7 +37,7 @@ Integrating into your code
 * You will need Java 6 and Maven 3 to build the code
 * Choose one of the above two methods to use this library
 * Build your code with Maven
-* You will see that two tests fail - they fail because you didn't provide your S3 access credentials and/or because there is no file /tmp/BabyOngBak.jpg
-* Put them where the two tests, at the top of the files, tell you to put them and put a JPG file with the above name into /tmp
+* You will see that two tests fail - they fail because you didn't provide your S3 access credentials
+* Put them where the two tests, at the top of the files, tell you to put them
 * Build again, this time things should be fine
 * Put the resulting .jar file into your application's library folder

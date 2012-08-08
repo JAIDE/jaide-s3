@@ -81,7 +81,7 @@ public class JaideS3Uploader {
   /**
    * Uploads the given resource to the pre-specified bucket.
    * 
-   * @param path The path where to store the resource inside the bucket.
+   * @param path The path where to store the resource inside the bucket. A null-value will put the file into the root folder.
    * @param filename The name to store the resource as.
    * @param file The resource to store inside the bucket.
    * @param contentType The file's content-type, as specified in the constants of this class.
@@ -96,7 +96,7 @@ public class JaideS3Uploader {
    * Please note that the uploaded file will be set with the ACL "PublicRead" and is therefore accessible to everyone.
    * 
    * @param bucket The target bucket inside S3. Needs to exist.
-   * @param path The path where to store the resource inside the bucket.
+   * @param path The path where to store the resource inside the bucket. A null-value will put the file into the root folder.
    * @param filename The name to store the resource as.
    * @param file The resource to store inside the bucket.
    * @param contentType The file's content-type, as specified in the constants of this class.
@@ -137,14 +137,54 @@ public class JaideS3Uploader {
   /**
    * Sanitizes the path and makes sure there is no "/" at the front and that there is a "/" at the end of the path.
    * 
-   * @param path The path to clean and fix.
+   * @param path The path to clean and fix. If a null-value is given nothing is done as that means that the file to be uploaded needs to be
+   *          put into the root folder.
    * @return The cleaned up path.
    */
   private String sanitizePath(String path) {
-    if (path.startsWith("/"))
+    if (path == null)
+      return "";
+    else if (path.startsWith("/"))
       path = path.substring(1);
 
     return path.endsWith("/") ? path : path + "/";
+  }
+
+  /**
+   * Deletes the file from the configured bucket.
+   * 
+   * @param pathAndFilename The full path and filename of the file to delete.
+   * @return True, if the object is deleted or if there was no object at the given location.
+   */
+  public boolean delete(String pathAndFilename) {
+    /*
+     * Refresh the connection, if necessary.
+     */
+    if (isRefreshConnection())
+      doRefreshConnection();
+
+    amazonS3.deleteObject(bucket, pathAndFilename);
+
+    return true;
+  }
+
+  /**
+   * Deletes the file from the specified bucket.
+   * 
+   * @param bucket The bucket to delete the file from.
+   * @param pathAndFilename The full path and filename of the file to delete.
+   * @return True, if the object is deleted or if there was no object at the given location.
+   */
+  public boolean delete(String bucket, String pathAndFilename) {
+    /*
+     * Refresh the connection, if necessary.
+     */
+    if (isRefreshConnection())
+      doRefreshConnection();
+
+    amazonS3.deleteObject(bucket, pathAndFilename);
+
+    return true;
   }
 
   /**

@@ -18,7 +18,7 @@ public class JaideS3UploaderTest {
    */
   @Test
   public void testJaideS3Uploader() throws IOException {
-    ByteArrayInputStream bin = new ByteArrayInputStream(FileUtils.readFileToByteArray(new File("/tmp/BabyOngBak.jpg")));
+    ByteArrayInputStream bin = new ByteArrayInputStream(FileUtils.readFileToByteArray(new File("target/test-classes/BabyOngBak.jpg")));
 
     /*
      * Call the Uploader by directly instantiating it using our S3 access credentials.
