@@ -1,7 +1,7 @@
 What is this?
 -------------
 
-This is a very simple wrapper around the Amazon S3 library. With this code you can:
+This is a very simple wrapper around the Amazon S3 library. With this code you may:
 
 * Easily upload/delete files to/from Amazon S3 with two lines of code... and one of those two lines is the import-package line at the top of your .java file :-)
 * Make use of Spring as the library is Spring-enabled - but it's not a must. You're free to use the direct uploader OR the Spring service, whatever you prefer.
